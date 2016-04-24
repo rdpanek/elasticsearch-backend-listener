@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="ext">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../test-tools/sm-linux-light-full-1.1.0/programs/apache-jmeter/lib/ext" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../../test-tools/sm-linux-light-full-1.1.0/programs/apache-jmeter/lib/ext" recursive="false" />
+  </library>
+</component>
