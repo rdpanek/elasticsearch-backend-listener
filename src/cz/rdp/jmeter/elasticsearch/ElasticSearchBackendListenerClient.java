@@ -7,8 +7,10 @@ import org.apache.jmeter.visualizers.backend.AbstractBackendListenerClient;
 import org.apache.jmeter.visualizers.backend.BackendListenerContext;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
+import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 
+import java.net.InetAddress;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -107,14 +109,16 @@ public class ElasticSearchBackendListenerClient extends
             dateTimeAppendFormat = null;
         }
         sampleType = context.getParameter("sampleType");
-        client = new TransportClient();
+
+        Settings settings = Settings.settingsBuilder().put("cluster.name", "elasticsearch").build();
+        client = TransportClient.builder().settings(settings).build();
         for(String serverPort: servers) {
             String[] serverAndPort = serverPort.split(":");
             int port = DEFAULT_ELASTICSEARCH_PORT;
             if(serverAndPort.length == 2) {
                 port = Integer.parseInt(serverAndPort[1]);
             }
-            ((TransportClient)client).addTransportAddress(new InetSocketTransportAddress(serverAndPort[0], port));
+            ((TransportClient) client).addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(serverAndPort[0]), port));
         }
         String normalizedTime = context.getParameter("normalizedTime");
         if(normalizedTime != null && normalizedTime.trim().length() > 0 ){
