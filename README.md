@@ -1,10 +1,6 @@
-# ElasticSearchBackendListenerClient
+# ElasticSearchBackendListenerClient Plugin
 
-This .jar is BackendListener for JMeter.
-
-## History
-
-Version 2.3.x
+## Version 2.3.x
 
 - elasticsearch-2.3.2.jar
 - hppc-0.7.1.jar
@@ -15,3 +11,9 @@ Version 2.3.x
 - lucene-core-5.5.0.jar
 - netty-3.10.5.Final.jar
 - t-digest-3.0.jar
+
+## Install
+
+1. copy all files from `/lib` to `/apache-jmeter/lib`
+2. copy `/out/artifacts/ElasticSearchBackendListenerClient/ElasticSearchBackendListenerClient.jar` to `/apache-jmeter/lib/ext`
+3. restart jmeter
