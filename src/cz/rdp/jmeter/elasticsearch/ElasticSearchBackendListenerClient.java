@@ -1,3 +1,4 @@
+// http://jmeter.apache.org/api/org/apache/jmeter/visualizers/backend/AbstractBackendListenerClient.html
 package cz.rdp.jmeter.elasticsearch;
 
 import org.apache.jmeter.assertions.AssertionResult;
@@ -24,6 +25,7 @@ public class ElasticSearchBackendListenerClient extends
     private String dateTimeAppendFormat;
     private String sampleType;
     private String runId;
+    private String verbose;
     private long offset;
     private static final int DEFAULT_ELASTICSEARCH_PORT = 9300;
     private static final String TIMESTAMP = "timestamp";
@@ -39,6 +41,8 @@ public class ElasticSearchBackendListenerClient extends
                 SimpleDateFormat sdf = new SimpleDateFormat(dateTimeAppendFormat);
                 indexNameToUse = indexName + sdf.format(jsonObject.get(TIMESTAMP));
             }
+            jsonObject.put("testPlanName", context.getParameter("testPlanName"));
+            jsonObject.put("release", context.getParameter("release"));
             client.prepareIndex(indexNameToUse, sampleType).setSource(jsonObject).execute().actionGet();
         }
 
@@ -55,12 +59,15 @@ public class ElasticSearchBackendListenerClient extends
 
         map.put("ResponseTime", result.getTime());
         map.put("ElapsedTime", result.getTime());
+        map.put("RequestHeaders", result.getRequestHeaders());
         map.put("ResponseCode", result.getResponseCode());
         map.put("ResponseMessage", result.getResponseMessage());
+        map.put("ResponseData", result.getResponseDataAsString());
+        map.put("SubResults", result.getSubResults());
+        map.put("DataEncoding", result.getDataEncodingWithDefault());
         map.put("ThreadName", result.getThreadName());
         map.put("DataType", result.getDataType());
         map.put("Success", String.valueOf(result.isSuccessful()));
-        //map.put("FailureMessage", result.get);
         map.put("GrpThreads", result.getGroupThreads());
         map.put("AllThreads", result.getAllThreads());
         map.put("URL", result.getUrlAsString());
@@ -71,7 +78,6 @@ public class ElasticSearchBackendListenerClient extends
         map.put("Bytes", result.getBytes());
         map.put("BodySize", result.getBodySize());
         map.put("ContentType", result.getContentType());
-        //map.put("HostName", result.get);
         map.put("IdleTime", result.getIdleTime());
         map.put(TIMESTAMP, new Date(result.getTimeStamp()));
         map.put("NormalizedTimestamp", new Date(result.getTimeStamp() - offset));
@@ -136,13 +142,13 @@ public class ElasticSearchBackendListenerClient extends
     public Arguments getDefaultParameters() {
         Arguments arguments = new Arguments();
         arguments.addArgument("elasticsearchCluster", "localhost:" + DEFAULT_ELASTICSEARCH_PORT);
-        arguments.addArgument("indexName", "jmeter-elasticsearch");
-        arguments.addArgument("sampleType", "SampleResult");
-        arguments.addArgument("dateTimeAppendFormat", "-yyyy-MM-DD");
+        arguments.addArgument("indexName", "smartmeterv2");
+        arguments.addArgument("sampleType", "smartmeterv2");
+        arguments.addArgument("dateTimeAppendFormat", "-yyyy-MM-dd");
         arguments.addArgument("normalizedTime","2015-01-01 00:00:00.000-00:00");
         arguments.addArgument("runId", "${__UUID()}");
-        //arguments.addArgument("summaryOnly", "true");
-        //arguments.addArgument("samplersList", "");
+        arguments.addArgument("release", "");
+        arguments.addArgument("testPlanName", "");
         return arguments;
 
 
