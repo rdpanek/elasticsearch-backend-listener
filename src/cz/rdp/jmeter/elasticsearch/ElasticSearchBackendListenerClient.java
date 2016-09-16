@@ -25,7 +25,6 @@ public class ElasticSearchBackendListenerClient extends
     private String dateTimeAppendFormat;
     private String sampleType;
     private String runId;
-    private String verbose;
     private long offset;
     private static final int DEFAULT_ELASTICSEARCH_PORT = 9300;
     private static final String TIMESTAMP = "timestamp";
@@ -74,6 +73,7 @@ public class ElasticSearchBackendListenerClient extends
         map.put("Latency", result.getLatency());
         map.put("ConnectTime", result.getConnectTime());
         map.put("SampleCount", result.getSampleCount());
+        //map.put("SamplerData", result.getSamplerData());
         map.put("ErrorCount", result.getErrorCount());
         map.put("Bytes", result.getBytes());
         map.put("BodySize", result.getBodySize());
@@ -126,7 +126,7 @@ public class ElasticSearchBackendListenerClient extends
             }
             ((TransportClient) client).addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(serverAndPort[0]), port));
         }
-        String normalizedTime = context.getParameter("normalizedTime");
+        String normalizedTime = "2015-01-01 00:00:00.000-00:00";
         if(normalizedTime != null && normalizedTime.trim().length() > 0 ){
             SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSX");
             Date d = sdf2.parse(normalizedTime);
@@ -145,7 +145,6 @@ public class ElasticSearchBackendListenerClient extends
         arguments.addArgument("indexName", "smartmeterv2");
         arguments.addArgument("sampleType", "smartmeterv2");
         arguments.addArgument("dateTimeAppendFormat", "-yyyy-MM-dd");
-        arguments.addArgument("normalizedTime","2015-01-01 00:00:00.000-00:00");
         arguments.addArgument("runId", "${__UUID()}");
         arguments.addArgument("release", "");
         arguments.addArgument("testPlanName", "");
