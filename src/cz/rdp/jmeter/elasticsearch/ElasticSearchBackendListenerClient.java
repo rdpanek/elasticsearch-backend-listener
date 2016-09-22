@@ -35,19 +35,20 @@ public class ElasticSearchBackendListenerClient extends
                                     BackendListenerContext context) {
         String indexNameToUse = indexName;
         for(SampleResult result : results) {
-            Map<String,Object> jsonObject = getMap(result);
+            Map<String,Object> jsonObject = getMap(result, context);
             if(dateTimeAppendFormat != null) {
                 SimpleDateFormat sdf = new SimpleDateFormat(dateTimeAppendFormat);
                 indexNameToUse = indexName + sdf.format(jsonObject.get(TIMESTAMP));
             }
             jsonObject.put("testPlanName", context.getParameter("testPlanName"));
             jsonObject.put("release", context.getParameter("release"));
+            jsonObject.put("verbose", context.getParameter("verbose"));
             client.prepareIndex(indexNameToUse, sampleType).setSource(jsonObject).execute().actionGet();
         }
 
     }
 
-    private Map<String, Object> getMap(SampleResult result) {
+    private Map<String, Object> getMap(SampleResult result, BackendListenerContext context) {
         Map<String, Object> map = new HashMap<String, Object>();
         String[] sampleLabels = result.getSampleLabel().split(VAR_DELIMITER);
         map.put("SampleLabel", sampleLabels[0]);
@@ -56,12 +57,19 @@ public class ElasticSearchBackendListenerClient extends
             map.put(varNameAndValue[0], varNameAndValue[1]);
         }
 
-        map.put("ResponseTime", result.getTime());
         map.put("ElapsedTime", result.getTime());
         map.put("RequestHeaders", result.getRequestHeaders());
         map.put("ResponseCode", result.getResponseCode());
         map.put("ResponseMessage", result.getResponseMessage());
-        map.put("ResponseData", result.getResponseDataAsString());
+        if (context.getParameter("verbose").equals("always")) {
+            map.put("ResponseData", result.getResponseDataAsString());
+        } else if (  context.getParameter("verbose").equals("ifError") && (result.getErrorCount() > 0) ) {
+            map.put("ResponseData", result.getResponseDataAsString());
+        } else if (  context.getParameter("verbose").equals("never") ) {
+            map.put("ResponseData", "");
+        } else {
+            map.put("ResponseData", "");
+        }
         map.put("SubResults", result.getSubResults());
         map.put("DataEncoding", result.getDataEncodingWithDefault());
         map.put("ThreadName", result.getThreadName());
@@ -73,7 +81,7 @@ public class ElasticSearchBackendListenerClient extends
         map.put("Latency", result.getLatency());
         map.put("ConnectTime", result.getConnectTime());
         map.put("SampleCount", result.getSampleCount());
-        //map.put("SamplerData", result.getSamplerData());
+        map.put("SamplerData", result.getSamplerData());
         map.put("ErrorCount", result.getErrorCount());
         map.put("Bytes", result.getBytes());
         map.put("BodySize", result.getBodySize());
@@ -148,6 +156,7 @@ public class ElasticSearchBackendListenerClient extends
         arguments.addArgument("runId", "${__UUID()}");
         arguments.addArgument("release", "");
         arguments.addArgument("testPlanName", "");
+        arguments.addArgument("verbose", "always|ifError|never");
         return arguments;
 
 
