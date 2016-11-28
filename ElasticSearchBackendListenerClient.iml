@@ -7,7 +7,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="ext" level="project" />
-    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="ext" level="project" />
+    <orderEntry type="library" name="org.elasticsearch.plugin:lang-mustache-client:5.0.0" level="project" />
+    <orderEntry type="library" name="org.elasticsearch.client:transport:5.0.0" level="project" />
+    <orderEntry type="library" name="org.elasticsearch.plugin:transport-netty3-client:5.0.0" level="project" />
+    <orderEntry type="library" name="org.elasticsearch.plugin:transport-netty4-client:5.0.0" level="project" />
   </component>
 </module>

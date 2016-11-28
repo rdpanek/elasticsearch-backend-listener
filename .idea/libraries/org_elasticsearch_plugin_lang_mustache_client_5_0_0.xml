@@ -1,0 +1,51 @@
+<component name="libraryTable">
+  <library name="org.elasticsearch.plugin:lang-mustache-client:5.0.0" type="repository">
+    <properties maven-id="org.elasticsearch.plugin:lang-mustache-client:5.0.0" />
+    <ANNOTATIONS>
+      <root url="file://$PROJECT_DIR$/../elasticsearch-5.0.0/lib" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/lang-mustache-client-5.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/compiler-0.9.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elasticsearch-5.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-core-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-analyzers-common-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-backward-codecs-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-grouping-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-queries-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-highlighter-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-join-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-memory-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-misc-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-queryparser-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-sandbox-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-spatial-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-spatial-extras-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-spatial3d-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spatial4j-0.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-suggest-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/securesm-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jopt-simple-5.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hppc-0.7.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/joda-time-2.9.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/joda-convert-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/snakeyaml-1.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-core-2.8.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-dataformat-smile-2.8.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-dataformat-yaml-2.8.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-dataformat-cbor-2.8.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/t-digest-3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/HdrHistogram-2.1.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jna-4.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jts-1.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/log4j-api-2.6.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/log4j-core-2.6.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/lang-mustache-client-5.0.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/lang-mustache-client-5.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

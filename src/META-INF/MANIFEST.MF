@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: cz.rdp.jmeter.elasticsearch.ElasticSearchBackendListenerCl
+ ient
+

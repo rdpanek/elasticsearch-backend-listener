@@ -1,4 +1,3 @@
-// http://jmeter.apache.org/api/org/apache/jmeter/visualizers/backend/AbstractBackendListenerClient.html
 package cz.rdp.jmeter.elasticsearch;
 
 import org.apache.jmeter.assertions.AssertionResult;
@@ -10,6 +9,7 @@ import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
+import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
 import java.net.InetAddress;
 import java.text.SimpleDateFormat;
@@ -20,32 +20,31 @@ import java.util.Map;
 
 public class ElasticSearchBackendListenerClient extends
         AbstractBackendListenerClient {
-    private Client client;
+    private Client _client;
     private String indexName;
     private String dateTimeAppendFormat;
     private String sampleType;
     private String runId;
     private long offset;
-    private static final int DEFAULT_ELASTICSEARCH_PORT = 9300;
-    private static final String TIMESTAMP = "timestamp";
-    private static final String VAR_DELIMITER = "~";
-    private static final String VALUE_DELIMITER = "=";
+    static final int DEFAULT_ELASTICSEARCH_PORT = 9300;
+    static final String TIMESTAMP = "timestamp";
+    static final String VAR_DELIMITER = "~";
+    static final String VALUE_DELIMITER = "=";
     @Override
     public void handleSampleResults(List<SampleResult> results,
                                     BackendListenerContext context) {
         String indexNameToUse = indexName;
         for(SampleResult result : results) {
-            Map<String,Object> jsonObject = getMap(result, context);
-            if(dateTimeAppendFormat != null) {
+            Map<String, Object> jsonObject = getMap(result, context);
+            if (dateTimeAppendFormat != null) {
                 SimpleDateFormat sdf = new SimpleDateFormat(dateTimeAppendFormat);
                 indexNameToUse = indexName + sdf.format(jsonObject.get(TIMESTAMP));
             }
             jsonObject.put("testPlanName", context.getParameter("testPlanName"));
             jsonObject.put("release", context.getParameter("release"));
             jsonObject.put("verbose", context.getParameter("verbose"));
-            client.prepareIndex(indexNameToUse, sampleType).setSource(jsonObject).execute().actionGet();
+            _client.prepareIndex(indexNameToUse, sampleType).setSource(jsonObject).get();
         }
-
     }
 
     private Map<String, Object> getMap(SampleResult result, BackendListenerContext context) {
@@ -124,15 +123,15 @@ public class ElasticSearchBackendListenerClient extends
         }
         sampleType = context.getParameter("sampleType");
 
-        Settings settings = Settings.settingsBuilder().put("cluster.name", "elasticsearch").build();
-        client = TransportClient.builder().settings(settings).build();
+        Settings settings = Settings.builder().put(Settings.EMPTY).build();
+        TransportClient client = new PreBuiltTransportClient(settings);
         for(String serverPort: servers) {
             String[] serverAndPort = serverPort.split(":");
             int port = DEFAULT_ELASTICSEARCH_PORT;
             if(serverAndPort.length == 2) {
                 port = Integer.parseInt(serverAndPort[1]);
             }
-            ((TransportClient) client).addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(serverAndPort[0]), port));
+            client.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(serverAndPort[0]), port));
         }
         String normalizedTime = "2015-01-01 00:00:00.000-00:00";
         if(normalizedTime != null && normalizedTime.trim().length() > 0 ){
@@ -142,6 +141,7 @@ public class ElasticSearchBackendListenerClient extends
             Date now = new Date();
             offset = now.getTime() - normalizedDate;
         }
+        _client = client;
         runId = context.getParameter("runId");
         super.setupTest(context);
     }
@@ -164,7 +164,7 @@ public class ElasticSearchBackendListenerClient extends
 
     @Override
     public void teardownTest(BackendListenerContext context) throws Exception {
-        client.close();
+        _client.close();
         super.teardownTest(context);
     }
 
