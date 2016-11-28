@@ -27,5 +27,6 @@
  - http://central.maven.org/maven2/org/apache/lucene/lucene-spatial/6.3.0/lucene-spatial-6.3.0.jar
  - http://central.maven.org/maven2/org/apache/lucene/lucene-sandbox/6.3.0/lucene-sandbox-6.3.0.jar
  - http://central.maven.org/maven2/io/netty/netty-all/4.1.6.Final/netty-all-4.1.6.Final.jar
+- http://central.maven.org/maven2/org/apache/logging/log4j/log4j-core/2.6.2/log4j-core-2.6.2.jar
 
 4. remove /apache-jmeter/lib/netty-all-4.0.27.Final.jar
