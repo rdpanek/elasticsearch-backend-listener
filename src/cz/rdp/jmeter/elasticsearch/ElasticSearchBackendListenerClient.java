@@ -22,7 +22,7 @@ public class ElasticSearchBackendListenerClient extends
         AbstractBackendListenerClient {
     private Client _client;
     private String indexName;
-    private String dateTimeAppendFormat;
+    private String dateTimeAppendFormat = "-yyyy-MM-dd";
     private String sampleType;
     private String runId;
     private long offset;
@@ -43,6 +43,7 @@ public class ElasticSearchBackendListenerClient extends
             jsonObject.put("testPlanName", context.getParameter("testPlanName"));
             jsonObject.put("release", context.getParameter("release"));
             jsonObject.put("verbose", context.getParameter("verbose"));
+            jsonObject.put("flag", context.getParameter("flag"));
             _client.prepareIndex(indexNameToUse, sampleType).setSource(jsonObject).get();
         }
     }
@@ -117,7 +118,6 @@ public class ElasticSearchBackendListenerClient extends
         String[] servers = elasticsearchCluster.split(",");
 
         indexName = context.getParameter("indexName");
-        dateTimeAppendFormat=context.getParameter("dateTimeAppendFormat");
         if(dateTimeAppendFormat!=null && dateTimeAppendFormat.trim().equals("")) {
             dateTimeAppendFormat = null;
         }
@@ -152,11 +152,11 @@ public class ElasticSearchBackendListenerClient extends
         arguments.addArgument("elasticsearchCluster", "localhost:" + DEFAULT_ELASTICSEARCH_PORT);
         arguments.addArgument("indexName", "smartmeterv2");
         arguments.addArgument("sampleType", "smartmeterv2");
-        arguments.addArgument("dateTimeAppendFormat", "-yyyy-MM-dd");
         arguments.addArgument("runId", "${__UUID()}");
         arguments.addArgument("release", "");
         arguments.addArgument("testPlanName", "");
         arguments.addArgument("verbose", "always|ifError|never");
+        arguments.addArgument("flag", "");
         return arguments;
 
 
