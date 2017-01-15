@@ -30,3 +30,4 @@
 - http://central.maven.org/maven2/org/apache/logging/log4j/log4j-core/2.6.2/log4j-core-2.6.2.jar
 
 4. remove /apache-jmeter/lib/netty-all-4.0.27.Final.jar
+5. how to use: https://github.com/test-stack/smartmeter
