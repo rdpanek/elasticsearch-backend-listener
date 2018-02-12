@@ -36,147 +36,139 @@ Create `smartmeterv2` template
 ```
 # PUT http://xxx.xxx.xxx.xxx:9200/_template/smartmeterv2
 {
-    "template": "smartmeterv2-*",
-    "mappings": {
-        "smartmeterv2": {
-            "dynamic": "strict",
-            "properties": {
-                "AllThreads": {
-                    "type": "long"
-                },
-                "Assertions": {
-                    "properties": {
-                        "Failure": {
-                            "type": "boolean"
-                        },
-                        "FailureMessage": {
-                            "type": "text",
-                            "index": true
-                        },
-                        "Name": {
-                            "type": "text",
-                            "index": true
-                        }
-                    }
-                },
-                "BodySize": {
-                    "type": "long"
-                },
-                "Bytes": {
-                    "type": "long"
-                },
-                "ConnectTime": {
-                    "type": "long"
-                },
-                "ContentType": {
-                    "type": "text"
-                },
-                "DataType": {
-                    "type": "text"
-                },
-                "ElapsedTime": {
-                    "type": "long"
-                },
-                "EndTime": {
-                    "type": "date",
-                    "format": "dateOptionalTime"
-                },
-                "ErrorCount": {
-                    "type": "long"
-                },
-                "GrpThreads": {
-                    "type": "long"
-                },
-                "IdleTime": {
-                    "type": "long"
-                },
-                "Latency": {
-                    "type": "long"
-                },
-                "NormalizedTimestamp": {
-                    "type": "date",
-                    "format": "dateOptionalTime"
-                },
-                "ResponseCode": {
-                    "type": "keyword",
-                    "index": true
-                },
-                "ResponseMessage": {
-                    "type": "text",
-                    "index": true
-                },
-                "ResponseTime": {
-                    "type": "long"
-                },
-                "RunId": {
-                    "type": "keyword",
-                    "index": true
-                },
-                "SampleCount": {
-                    "type": "long"
-                },
-                "SampleLabel": {
-                    "type": "keyword",
-                    "index": true
-                },
-                "StartTime": {
-                    "type": "date",
-                    "format": "dateOptionalTime"
-                },
-                "Success": {
-                    "type": "keyword"
-                },
-                "ThreadName": {
-                    "type": "keyword",
-                    "index": true
-                },
-                "URL": {
-                    "type": "keyword",
-                    "index": true
-                },
-                "timestamp": {
-                    "type": "date",
-                    "format": "dateOptionalTime"
-                },
-                "release": {
-                    "type": "keyword",
-                    "index": true
-                },
-                "testPlanName": {
-                    "type": "keyword",
-                    "index": true
-                },
-                "RequestHeaders": {
-                    "type": "text",
-                    "index": true
-                },
-                "ResponseData": {
-                    "type": "text",
-                    "index": false
-                },
-                "DataEncoding": {
-                    "type": "keyword",
-                    "index": false
-                },
-                "SamplerData": {
-                    "type": "text",
-                    "index": true
-                },
-                "SubResults": {
-                    "type": "text",
-                    "index": true
-                },
-                "verbose": {
-                    "type": "keyword",
-                    "index": false
-                },
-                "flag": {
-                    "type": "keyword",
-                    "index": true
-                }
-            }
-        }
-    }
+	"smartmeterv2-*": {
+		"mappings": {
+			"smartmeterv2": {
+				"dynamic": "strict",
+				"properties": {
+					"AllThreads": {
+						"type": "long"
+					},
+					"Assertions": {
+						"properties": {
+							"Failure": {
+								"type": "boolean"
+							},
+							"FailureMessage": {
+								"type": "text"
+							},
+							"Name": {
+								"type": "text"
+							}
+						}
+					},
+					"BodySize": {
+						"type": "long"
+					},
+					"Bytes": {
+						"type": "long"
+					},
+					"ConnectTime": {
+						"type": "long"
+					},
+					"ContentType": {
+						"type": "text"
+					},
+					"DataEncoding": {
+						"type": "keyword",
+						"index": false
+					},
+					"DataType": {
+						"type": "text"
+					},
+					"ElapsedTime": {
+						"type": "long"
+					},
+					"EndTime": {
+						"type": "date",
+						"format": "dateOptionalTime"
+					},
+					"ErrorCount": {
+						"type": "long"
+					},
+					"GrpThreads": {
+						"type": "long"
+					},
+					"IdleTime": {
+						"type": "long"
+					},
+					"Latency": {
+						"type": "long"
+					},
+					"NormalizedTimestamp": {
+						"type": "date",
+						"format": "dateOptionalTime"
+					},
+					"RequestHeaders": {
+						"type": "text"
+					},
+					"ResponseCode": {
+						"type": "keyword"
+					},
+					"ResponseData": {
+						"type": "text",
+						"index": false
+					},
+					"ResponseMessage": {
+						"type": "text",
+						"fields": {
+							"raw": {
+								"type": "keyword"
+							}
+						}
+					},
+					"ResponseTime": {
+						"type": "long"
+					},
+					"RunId": {
+						"type": "keyword"
+					},
+					"SampleCount": {
+						"type": "long"
+					},
+					"SampleLabel": {
+						"type": "keyword"
+					},
+					"SamplerData": {
+						"type": "text"
+					},
+					"StartTime": {
+						"type": "date",
+						"format": "dateOptionalTime"
+					},
+					"SubResults": {
+						"type": "text"
+					},
+					"Success": {
+						"type": "keyword"
+					},
+					"ThreadName": {
+						"type": "keyword"
+					},
+					"URL": {
+						"type": "keyword"
+					},
+					"flag": {
+						"type": "keyword"
+					},
+					"release": {
+						"type": "keyword"
+					},
+					"testPlanName": {
+						"type": "keyword"
+					},
+					"timestamp": {
+						"type": "date",
+						"format": "dateOptionalTime"
+					},
+					"verbose": {
+						"type": "keyword",
+						"index": false
+					}
+				}
+			}
+		}
+	}
 }
 ```
 
