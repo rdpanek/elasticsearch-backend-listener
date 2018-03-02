@@ -34,10 +34,10 @@ For view of real-time performance test metrics, you cau use [Elasticsearch](http
 Create `smartmeterv2` template
 
 ```
-# PUT http://xxx.xxx.xxx.xxx:9200/_template/smartmeterv2
-{
-	"smartmeterv2-*": {
-		"mappings": {
+curl -XPUT "http://localhost:9200/_template/smartmeterv2" -H 'Content-Type: application/json' -d'
+{"template":"smartmeterv2*",
+
+  "mappings": {
 			"smartmeterv2": {
 				"dynamic": "strict",
 				"properties": {
@@ -107,7 +107,11 @@ Create `smartmeterv2` template
 					},
 					"ResponseData": {
 						"type": "text",
-						"index": false
+						"fields": {
+							"raw": {
+								"type": "keyword"
+							}
+						}
 					},
 					"ResponseMessage": {
 						"type": "text",
@@ -168,8 +172,7 @@ Create `smartmeterv2` template
 				}
 			}
 		}
-	}
-}
+}'
 ```
 
 Check successfully template was added
