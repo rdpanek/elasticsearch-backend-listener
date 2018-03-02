@@ -152,5 +152,19 @@
         "searchSourceJSON": "{\"index\":\"AV8A0c0Kb9xV0WVFgzrg\",\"query\":{\"match_all\":{}},\"filter\":[]}"
       }
     }
+  },
+  {
+    "_id": "AWHh-EHnUoZjWbBOCwY9",
+    "_type": "visualization",
+    "_source": {
+      "title": "Response Data ( smartmeter )",
+      "visState": "{\"title\":\"Response Data ( smartmeter )\",\"type\":\"table\",\"params\":{\"perPage\":0,\"showMeticsAtAllLevels\":false,\"showPartialRows\":false,\"showTotal\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"totalFunc\":\"sum\",\"type\":\"table\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"4\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"ResponseCode\",\"size\":500,\"order\":\"desc\",\"orderBy\":\"1\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"SampleLabel\",\"size\":500,\"order\":\"desc\",\"orderBy\":\"1\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"ResponseData.raw\",\"size\":500,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Response Message\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"AV8A0c0Kb9xV0WVFgzrg\",\"query\":{\"match_all\":{}},\"filter\":[]}"
+      }
+    }
   }
 ]
