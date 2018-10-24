@@ -5,10 +5,11 @@ import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.samplers.SampleResult;
 import org.apache.jmeter.visualizers.backend.AbstractBackendListenerClient;
 import org.apache.jmeter.visualizers.backend.BackendListenerContext;
+
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.common.transport.InetSocketTransportAddress;
+import org.elasticsearch.common.transport.TransportAddress;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
 import java.net.InetAddress;
@@ -131,7 +132,7 @@ public class ElasticSearchBackendListenerClient extends
             if(serverAndPort.length == 2) {
                 port = Integer.parseInt(serverAndPort[1]);
             }
-            client.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(serverAndPort[0]), port));
+            client.addTransportAddress(new TransportAddress(InetAddress.getByName(serverAndPort[0]), port));
         }
         String normalizedTime = "2015-01-01 00:00:00.000-00:00";
         if(normalizedTime != null && normalizedTime.trim().length() > 0 ){
