@@ -1,21 +1,20 @@
-# SmartMeter ElasticSearchBackendListenerClient Plugin
+# JMeter ElasticSearchBackendListenerClient Plugin
 
 ## Compatibility
 
-### SmartMeter
+### JMeter
 
-- (tested 31.12.2017) SmartMeter 1.6.0-SNAPSHOT-171204-1719_macos
+- (tested 24.10.2018) JMeter 5.0.0
 - Smartmeter 1.3.0-SNAPSHOT-161122-1811
 
 ### Elasticsearch
 
-- (tested 31.12.2017) Elasticsearch 5.x
+- (tested 24.10.2018) Elasticsearch 6.x
 
 ## Install
 
-1.  copy `install.sh` to `path-to-Smarmeter/programs/apache-jmeter/lib`
+1.  copy `install.sh` to `path-to-apache-jmeter/lib`
 2.  run `./install.sh`
-3.  restart Smartmeter
 
 ## How to use
 
