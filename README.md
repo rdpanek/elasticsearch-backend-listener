@@ -33,145 +33,152 @@ For view of real-time performance test metrics, you cau use [Elasticsearch](http
 Create `smartmeterv2` template
 
 ```
-curl -XPUT "http://localhost:9200/_template/smartmeterv2" -H 'Content-Type: application/json' -d'
-{"template":"smartmeterv2*",
-
+PUT _template/smartmeter
+{
+  "index_patterns": ["smartmeter-*"],
+  "settings": {
+    "number_of_shards": 2,
+    "number_of_replicas" : 1,
+    "index.translog.durability": "async",
+    "index.refresh_interval": "30s"
+  },
   "mappings": {
-			"smartmeterv2": {
-				"dynamic": "strict",
-				"properties": {
-					"AllThreads": {
-						"type": "long"
-					},
-					"Assertions": {
-						"properties": {
-							"Failure": {
-								"type": "boolean"
-							},
-							"FailureMessage": {
-								"type": "text"
-							},
-							"Name": {
-								"type": "text"
-							}
-						}
-					},
-					"BodySize": {
-						"type": "long"
-					},
-					"Bytes": {
-						"type": "long"
-					},
-					"ConnectTime": {
-						"type": "long"
-					},
-					"ContentType": {
-						"type": "text"
-					},
-					"DataEncoding": {
-						"type": "keyword",
-						"index": false
-					},
-					"DataType": {
-						"type": "text"
-					},
-					"ElapsedTime": {
-						"type": "long"
-					},
-					"EndTime": {
-						"type": "date",
-						"format": "dateOptionalTime"
-					},
-					"ErrorCount": {
-						"type": "long"
-					},
-					"GrpThreads": {
-						"type": "long"
-					},
-					"IdleTime": {
-						"type": "long"
-					},
-					"Latency": {
-						"type": "long"
-					},
-					"NormalizedTimestamp": {
-						"type": "date",
-						"format": "dateOptionalTime"
-					},
-					"RequestHeaders": {
-						"type": "text"
-					},
-					"ResponseCode": {
-						"type": "keyword"
-					},
-					"ResponseData": {
-						"type": "text",
-						"fields": {
-							"raw": {
-								"type": "keyword"
-							}
-						}
-					},
-					"ResponseMessage": {
-						"type": "text",
-						"fields": {
-							"raw": {
-								"type": "keyword"
-							}
-						}
-					},
-					"ResponseTime": {
-						"type": "long"
-					},
-					"RunId": {
-						"type": "keyword"
-					},
-					"SampleCount": {
-						"type": "long"
-					},
-					"SampleLabel": {
-						"type": "keyword"
-					},
-					"SamplerData": {
-						"type": "text"
-					},
-					"StartTime": {
-						"type": "date",
-						"format": "dateOptionalTime"
-					},
-					"SubResults": {
-						"type": "text"
-					},
-					"Success": {
-						"type": "keyword"
-					},
-					"ThreadName": {
-						"type": "keyword"
-					},
-					"URL": {
-						"type": "keyword"
-					},
-					"flag": {
-						"type": "keyword"
-					},
-					"release": {
-						"type": "keyword"
-					},
-					"testPlanName": {
-						"type": "keyword"
-					},
-					"timestamp": {
-						"type": "date",
-						"format": "dateOptionalTime"
-					},
-					"verbose": {
-						"type": "keyword",
-						"index": false
-					}
-				}
-			}
-		}
-}'
+    "smartmeter": {
+  		"properties": {
+  			"AllThreads": {
+  				"type": "long"
+  			},
+  			"Assertions": {
+  				"properties": {
+  					"Failure": {
+  						"type": "boolean"
+  					},
+  					"FailureMessage": {
+  						"type": "keyword",
+  				    "index": false
+  					},
+  					"Name": {
+  						"type": "keyword",
+  				    "index": false
+  					}
+  				}
+  			},
+  			"BodySize": {
+  				"type": "long"
+  			},
+  			"Bytes": {
+  				"type": "long"
+  			},
+  			"ConnectTime": {
+  				"type": "long"
+  			},
+  			"ContentType": {
+  				"type": "keyword",
+  				"index": false
+  			},
+  			"DataEncoding": {
+  				"type": "keyword",
+  				"index": false
+  			},
+  			"DataType": {
+  				"type": "keyword",
+  				"index": false
+  			},
+  			"ElapsedTime": {
+  				"type": "long"
+  			},
+  			"EndTime": {
+  				"type": "date",
+  				"format": "dateOptionalTime"
+  			},
+  			"ErrorCount": {
+  				"type": "long"
+  			},
+  			"GrpThreads": {
+  				"type": "long"
+  			},
+  			"IdleTime": {
+  				"type": "long"
+  			},
+  			"Latency": {
+  				"type": "long"
+  			},
+  			"NormalizedTimestamp": {
+  				"type": "date",
+  				"format": "dateOptionalTime"
+  			},
+  			"RequestHeaders": {
+  				"type": "text",
+  				"index": false
+  			},
+  			"ResponseCode": {
+  				"type": "keyword"
+  			},
+  			"ResponseData": {
+  				"type": "text",
+  				"fields": {
+  					"raw": {
+  						"type": "keyword"
+  					}
+  				}
+  			},
+  			"ResponseMessage": {
+  				"type": "text",
+  				"fields": {
+  					"raw": {
+  						"type": "keyword"
+  					}
+  				}
+  			},
+  			"RunId": {
+  				"type": "keyword"
+  			},
+  			"SampleCount": {
+  				"type": "long"
+  			},
+  			"SampleLabel": {
+  				"type": "keyword"
+  			},
+  			"SamplerData": {
+  				"type": "text"
+  			},
+  			"StartTime": {
+  				"type": "date",
+  				"format": "dateOptionalTime"
+  			},
+  			"SubResults": {
+  				"type": "text"
+  			},
+  			"Success": {
+  				"type": "boolean"
+  			},
+  			"ThreadName": {
+  				"type": "keyword",
+  				"index": false
+  			},
+  			"URL": {
+  				"type": "keyword"
+  			},
+  			"flag": {
+  				"type": "keyword"
+  			},
+  			"release": {
+  				"type": "keyword"
+  			},
+  			"testPlanName": {
+  				"type": "keyword"
+  			},
+  			"timestamp": {
+  				"type": "date",
+  				"format": "dateOptionalTime"
+  			},
+  			"verbose": {
+  				"type": "keyword"
+  			}
+  		}
+    }
+	}
+}
 ```
 
 Check Kibana
