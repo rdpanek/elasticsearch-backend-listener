@@ -9,7 +9,7 @@
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"AV8A0c0Kb9xV0WVFgzrg\",\"query\":{\"match_all\":{}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"43cf6660-1b75-11e9-98e3-9beba41aebda\",\"query\":{\"query\":{\"match_all\":{}},\"language\":\"lucene\"},\"filter\":[]}"
       }
     }
   },
@@ -23,7 +23,7 @@
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"AV8A0c0Kb9xV0WVFgzrg\",\"query\":{\"match_all\":{}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"43cf6660-1b75-11e9-98e3-9beba41aebda\",\"query\":{\"query\":{\"match_all\":{}},\"language\":\"lucene\"},\"filter\":[]}"
       }
     }
   },
@@ -37,7 +37,7 @@
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"AV8A0c0Kb9xV0WVFgzrg\",\"query\":{\"query_string\":{\"query\":\"Success: false\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"43cf6660-1b75-11e9-98e3-9beba41aebda\",\"query\":{\"query\":{\"query_string\":{\"query\":\"Success: false\",\"analyze_wildcard\":true}},\"language\":\"lucene\"},\"filter\":[]}"
       }
     }
   },
@@ -51,49 +51,7 @@
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"AV8A0c0Kb9xV0WVFgzrg\",\"query\":{\"match_all\":{}},\"filter\":[]}"
-      }
-    }
-  },
-  {
-    "_id": "AV8CiLlpQVLMb8rgJRmP",
-    "_type": "visualization",
-    "_source": {
-      "title": "Overview per Samples ( smartmeter )",
-      "visState": "{\"title\":\"Overview per Samples ( smartmeter )\",\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":false,\"totalFunc\":\"count\",\"type\":\"table\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"SampleLabel\",\"size\":50,\"order\":\"desc\",\"orderBy\":\"3\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"ElapsedTime\",\"customLabel\":\"\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"percentiles\",\"schema\":\"metric\",\"params\":{\"field\":\"ElapsedTime\",\"percents\":[30,50,70,90],\"customLabel\":\"\"}},{\"id\":\"5\",\"enabled\":true,\"type\":\"percentiles\",\"schema\":\"metric\",\"params\":{\"field\":\"Latency\",\"percents\":[90],\"customLabel\":\"\"}},{\"id\":\"6\",\"enabled\":true,\"type\":\"percentiles\",\"schema\":\"metric\",\"params\":{\"field\":\"ConnectTime\",\"percents\":[90]}},{\"id\":\"7\",\"enabled\":true,\"type\":\"percentiles\",\"schema\":\"metric\",\"params\":{\"field\":\"ConnectTime\",\"percents\":[90]}},{\"id\":\"8\",\"enabled\":true,\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"ErrorCount\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",
-      "description": "",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"AV8A0c0Kb9xV0WVFgzrg\",\"query\":{\"match_all\":{}},\"filter\":[]}"
-      }
-    }
-  },
-  {
-    "_id": "AV8Bb8ZEQVLMb8rgJPms",
-    "_type": "visualization",
-    "_source": {
-      "title": "Max ElapsedTime / AVG ElapsedTime / Max AllThreads ( smartmeter )",
-      "visState": "{\"title\":\"Max ElapsedTime / AVG ElapsedTime / Max AllThreads ( smartmeter )\",\"type\":\"histogram\",\"params\":{\"addLegend\":true,\"addTimeMarker\":true,\"addTooltip\":true,\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"labels\":{\"filter\":true,\"rotate\":0,\"show\":true,\"truncate\":100},\"position\":\"bottom\",\"scale\":{\"type\":\"linear\"},\"show\":true,\"style\":{},\"title\":{\"text\":\"EndTime per 30 seconds\"},\"type\":\"category\"}],\"grid\":{\"categoryLines\":true,\"style\":{\"color\":\"#eee\"},\"valueAxis\":null},\"legendPosition\":\"right\",\"seriesParams\":[{\"data\":{\"id\":\"1\",\"label\":\"MAX AllThreads\"},\"drawLinesBetweenPoints\":true,\"interpolate\":\"step-after\",\"lineWidth\":2,\"mode\":\"normal\",\"show\":\"true\",\"showCircles\":false,\"type\":\"area\",\"valueAxis\":\"ValueAxis-1\"},{\"data\":{\"id\":\"3\",\"label\":\"MAX ElapsedTime\"},\"drawLinesBetweenPoints\":true,\"interpolate\":\"linear\",\"lineWidth\":1,\"mode\":\"normal\",\"show\":true,\"showCircles\":false,\"type\":\"line\",\"valueAxis\":\"ValueAxis-2\"},{\"show\":true,\"mode\":\"normal\",\"type\":\"line\",\"drawLinesBetweenPoints\":true,\"showCircles\":false,\"interpolate\":\"linear\",\"lineWidth\":1,\"data\":{\"id\":\"4\",\"label\":\"AVG ElapsedTime\"},\"valueAxis\":\"ValueAxis-2\"}],\"times\":[],\"type\":\"line\",\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"labels\":{\"filter\":false,\"rotate\":0,\"show\":true,\"truncate\":100},\"name\":\"LeftAxis-1\",\"position\":\"left\",\"scale\":{\"mode\":\"normal\",\"type\":\"linear\"},\"show\":true,\"style\":{},\"title\":{\"text\":\"MAX AllThreads\"},\"type\":\"value\"},{\"id\":\"ValueAxis-2\",\"labels\":{\"filter\":false,\"rotate\":0,\"show\":true,\"truncate\":100},\"name\":\"RightAxis-1\",\"position\":\"right\",\"scale\":{\"mode\":\"normal\",\"type\":\"linear\"},\"show\":true,\"style\":{},\"title\":{\"text\":\"MAX ElapsedTime\"},\"type\":\"value\"}]},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"AllThreads\",\"customLabel\":\"MAX AllThreads\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"EndTime\",\"interval\":\"custom\",\"customInterval\":\"30s\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"enabled\":true,\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"ElapsedTime\",\"customLabel\":\"MAX ElapsedTime\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"ElapsedTime\",\"customLabel\":\"AVG ElapsedTime\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"vis\":{\"colors\":{\"AVG ElapsedTime\":\"#447EBC\",\"MAX ElapsedTime\":\"#890F02\",\"Max AllThreads\":\"#D683CE\",\"MAX AllThreads\":\"#9AC48A\"},\"legendOpen\":true}}",
-      "description": "",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"AV8A0c0Kb9xV0WVFgzrg\",\"query\":{\"match_all\":{}},\"filter\":[]}"
-      }
-    }
-  },
-  {
-    "_id": "AV8Ci_dJQVLMb8rgJSOO",
-    "_type": "visualization",
-    "_source": {
-      "title": "Release ( smartmeter )",
-      "visState": "{\"title\":\"Release ( smartmeter )\",\"type\":\"table\",\"params\":{\"perPage\":4,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":false,\"totalFunc\":\"sum\",\"type\":\"table\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Transactions\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"testPlanName\",\"size\":50,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"TestPlan\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"release\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",
-      "description": "",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"AV8A0c0Kb9xV0WVFgzrg\",\"query\":{\"match_all\":{}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"43cf6660-1b75-11e9-98e3-9beba41aebda\",\"query\":{\"query\":{\"match_all\":{}},\"language\":\"lucene\"},\"filter\":[]}"
       }
     }
   },
@@ -107,35 +65,21 @@
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"AV8A0c0Kb9xV0WVFgzrg\",\"query\":{\"match_all\":{}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"43cf6660-1b75-11e9-98e3-9beba41aebda\",\"query\":{\"query\":{\"match_all\":{}},\"language\":\"lucene\"},\"filter\":[]}"
       }
     }
   },
   {
-    "_id": "AV8CmAf4QVLMb8rgJUqi",
+    "_id": "AV8Ci_dJQVLMb8rgJSOO",
     "_type": "visualization",
     "_source": {
-      "title": "URI ( smartmeter )",
-      "visState": "{\"title\":\"URI ( smartmeter )\",\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":false,\"totalFunc\":\"sum\",\"type\":\"table\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"URL\",\"size\":50,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"URI\"}}],\"listeners\":{}}",
+      "title": "Release ( smartmeter )",
+      "visState": "{\"title\":\"Release ( smartmeter )\",\"type\":\"table\",\"params\":{\"perPage\":4,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":false,\"totalFunc\":\"sum\",\"type\":\"table\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Transactions\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"testPlanName\",\"size\":50,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"TestPlan\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"release\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
       "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"AV8A0c0Kb9xV0WVFgzrg\",\"query\":{\"match_all\":{}},\"filter\":[]}"
-      }
-    }
-  },
-  {
-    "_id": "AV8CyEVOQVLMb8rgJcv0",
-    "_type": "visualization",
-    "_source": {
-      "title": "Samplers ( smartmeter )",
-      "visState": "{\"title\":\"Samplers ( smartmeter )\",\"type\":\"heatmap\",\"params\":{\"addLegend\":true,\"addTooltip\":true,\"colorSchema\":\"Blues\",\"colorsNumber\":10,\"colorsRange\":[],\"enableHover\":false,\"invertColors\":false,\"legendPosition\":\"right\",\"percentageMode\":true,\"setColorRange\":false,\"times\":[],\"type\":\"heatmap\",\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"labels\":{\"color\":\"#555\",\"rotate\":0,\"show\":true},\"scale\":{\"defaultYExtents\":false,\"type\":\"linear\"},\"show\":false,\"type\":\"value\"}]},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"EndTime\",\"interval\":\"custom\",\"customInterval\":\"30s\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"SampleLabel\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Samplers\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{\"vis\":{\"defaultColors\":{\"0% - 10%\":\"rgb(247,251,255)\",\"10% - 20%\":\"rgb(227,238,249)\",\"20% - 30%\":\"rgb(208,225,242)\",\"30% - 40%\":\"rgb(182,212,233)\",\"40% - 50%\":\"rgb(148,196,223)\",\"50% - 60%\":\"rgb(107,174,214)\",\"60% - 70%\":\"rgb(74,152,201)\",\"70% - 80%\":\"rgb(46,126,188)\",\"80% - 90%\":\"rgb(23,100,171)\",\"90% - 100%\":\"rgb(8,74,145)\"}}}",
-      "description": "",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"AV8A0c0Kb9xV0WVFgzrg\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"43cf6660-1b75-11e9-98e3-9beba41aebda\",\"query\":{\"query\":{\"match_all\":{}},\"language\":\"lucene\"},\"filter\":[]}"
       }
     }
   },
@@ -149,7 +93,35 @@
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"AV8A0c0Kb9xV0WVFgzrg\",\"query\":{\"match_all\":{}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"43cf6660-1b75-11e9-98e3-9beba41aebda\",\"query\":{\"query\":{\"match_all\":{}},\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "AV8CmAf4QVLMb8rgJUqi",
+    "_type": "visualization",
+    "_source": {
+      "title": "URI ( smartmeter )",
+      "visState": "{\"title\":\"URI ( smartmeter )\",\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":false,\"totalFunc\":\"sum\",\"type\":\"table\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"URL\",\"size\":50,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"URI\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"43cf6660-1b75-11e9-98e3-9beba41aebda\",\"query\":{\"query\":{\"match_all\":{}},\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "AV8CyEVOQVLMb8rgJcv0",
+    "_type": "visualization",
+    "_source": {
+      "title": "Samplers ( smartmeter )",
+      "visState": "{\"title\":\"Samplers ( smartmeter )\",\"type\":\"heatmap\",\"params\":{\"addLegend\":true,\"addTooltip\":true,\"colorSchema\":\"Blues\",\"colorsNumber\":10,\"colorsRange\":[],\"enableHover\":false,\"invertColors\":false,\"legendPosition\":\"right\",\"percentageMode\":true,\"setColorRange\":false,\"times\":[],\"type\":\"heatmap\",\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"labels\":{\"color\":\"#555\",\"rotate\":0,\"show\":true},\"scale\":{\"defaultYExtents\":false,\"type\":\"linear\"},\"show\":false,\"type\":\"value\"}]},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"EndTime\",\"interval\":\"custom\",\"customInterval\":\"30s\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"SampleLabel\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Samplers\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"defaultColors\":{\"0% - 10%\":\"rgb(247,251,255)\",\"10% - 20%\":\"rgb(227,238,249)\",\"20% - 30%\":\"rgb(208,225,242)\",\"30% - 40%\":\"rgb(182,212,233)\",\"40% - 50%\":\"rgb(148,196,223)\",\"50% - 60%\":\"rgb(107,174,214)\",\"60% - 70%\":\"rgb(74,152,201)\",\"70% - 80%\":\"rgb(46,126,188)\",\"80% - 90%\":\"rgb(23,100,171)\",\"90% - 100%\":\"rgb(8,74,145)\"}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"43cf6660-1b75-11e9-98e3-9beba41aebda\",\"query\":{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"language\":\"lucene\"},\"filter\":[]}"
       }
     }
   },
@@ -163,7 +135,35 @@
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"AV8A0c0Kb9xV0WVFgzrg\",\"query\":{\"match_all\":{}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"43cf6660-1b75-11e9-98e3-9beba41aebda\",\"query\":{\"query\":{\"match_all\":{}},\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "AV8CiLlpQVLMb8rgJRmP",
+    "_type": "visualization",
+    "_source": {
+      "title": "Overview per Samples ( smartmeter )",
+      "visState": "{\"title\":\"Overview per Samples ( smartmeter )\",\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":false,\"totalFunc\":\"count\",\"type\":\"table\",\"showMetricsAtAllLevels\":false},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"SampleLabel\",\"size\":50,\"order\":\"desc\",\"orderBy\":\"3\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"Latency\",\"customLabel\":\"\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"percentiles\",\"schema\":\"metric\",\"params\":{\"field\":\"Latency\",\"percents\":[50,90],\"customLabel\":\"\"}},{\"id\":\"5\",\"enabled\":true,\"type\":\"percentiles\",\"schema\":\"metric\",\"params\":{\"field\":\"ElapsedTime\",\"percents\":[90],\"customLabel\":\"\"}},{\"id\":\"6\",\"enabled\":true,\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"Latency\"}},{\"id\":\"7\",\"enabled\":true,\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"ElapsedTime\"}},{\"id\":\"8\",\"enabled\":true,\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"ErrorCount\"}}]}",
+      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"43cf6660-1b75-11e9-98e3-9beba41aebda\",\"query\":{\"query\":{\"match_all\":{}},\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "AV8Bb8ZEQVLMb8rgJPms",
+    "_type": "visualization",
+    "_source": {
+      "title": "Latency and ElapsedTime / Max AllThreads ( smartmeter )",
+      "visState": "{\"title\":\"Latency and ElapsedTime / Max AllThreads ( smartmeter )\",\"type\":\"histogram\",\"params\":{\"addLegend\":true,\"addTimeMarker\":true,\"addTooltip\":true,\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"labels\":{\"filter\":true,\"rotate\":0,\"show\":true,\"truncate\":100},\"position\":\"bottom\",\"scale\":{\"type\":\"linear\"},\"show\":true,\"style\":{},\"title\":{\"text\":\"EndTime per 30 seconds\"},\"type\":\"category\"}],\"grid\":{\"categoryLines\":true,\"style\":{\"color\":\"#eee\"},\"valueAxis\":null},\"legendPosition\":\"right\",\"seriesParams\":[{\"data\":{\"id\":\"1\",\"label\":\"VU\"},\"drawLinesBetweenPoints\":true,\"interpolate\":\"step-after\",\"lineWidth\":2,\"mode\":\"normal\",\"show\":\"true\",\"showCircles\":false,\"type\":\"area\",\"valueAxis\":\"ValueAxis-1\"},{\"data\":{\"id\":\"3\",\"label\":\"Percentiles of Latency\"},\"drawLinesBetweenPoints\":true,\"interpolate\":\"linear\",\"lineWidth\":1,\"mode\":\"normal\",\"show\":true,\"showCircles\":false,\"type\":\"line\",\"valueAxis\":\"ValueAxis-2\"},{\"show\":true,\"mode\":\"normal\",\"type\":\"line\",\"drawLinesBetweenPoints\":true,\"showCircles\":false,\"interpolate\":\"linear\",\"lineWidth\":1,\"data\":{\"id\":\"4\",\"label\":\"Percentiles of ElapsedTime\"},\"valueAxis\":\"ValueAxis-2\"}],\"times\":[],\"type\":\"line\",\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"labels\":{\"filter\":false,\"rotate\":0,\"show\":true,\"truncate\":100},\"name\":\"LeftAxis-1\",\"position\":\"left\",\"scale\":{\"mode\":\"normal\",\"type\":\"linear\"},\"show\":true,\"style\":{},\"title\":{\"text\":\"VU\"},\"type\":\"value\"},{\"id\":\"ValueAxis-2\",\"labels\":{\"filter\":false,\"rotate\":0,\"show\":true,\"truncate\":100},\"name\":\"RightAxis-1\",\"position\":\"right\",\"scale\":{\"mode\":\"normal\",\"type\":\"linear\"},\"show\":true,\"style\":{},\"title\":{\"text\":\"MAX ElapsedTime\"},\"type\":\"value\"}]},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"AllThreads\",\"customLabel\":\"VU\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"EndTime\",\"interval\":\"custom\",\"customInterval\":\"30s\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"enabled\":true,\"type\":\"percentiles\",\"schema\":\"metric\",\"params\":{\"field\":\"Latency\",\"percents\":[90]}},{\"id\":\"4\",\"enabled\":true,\"type\":\"percentiles\",\"schema\":\"metric\",\"params\":{\"field\":\"ElapsedTime\",\"percents\":[90]}}]}",
+      "uiStateJSON": "{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"vis\":{\"colors\":{\"AVG ElapsedTime\":\"#447EBC\",\"MAX ElapsedTime\":\"#890F02\",\"Max AllThreads\":\"#D683CE\",\"MAX AllThreads\":\"#9AC48A\"},\"legendOpen\":true}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"43cf6660-1b75-11e9-98e3-9beba41aebda\",\"query\":{\"query\":{\"match_all\":{}},\"language\":\"lucene\"},\"filter\":[]}"
       }
     }
   }
