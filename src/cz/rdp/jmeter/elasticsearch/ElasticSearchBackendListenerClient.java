@@ -113,8 +113,9 @@ public class ElasticSearchBackendListenerClient extends
 
     @Override
     public void setupTest(BackendListenerContext context) throws Exception {
-        // TODO Auto-generated method stub
+
         String elasticsearchCluster = context.getParameter("elasticsearchCluster");
+        String clusterName = context.getParameter("clusterName");
 
         String[] servers = elasticsearchCluster.split(",");
 
@@ -124,7 +125,9 @@ public class ElasticSearchBackendListenerClient extends
         }
         sampleType = context.getParameter("sampleType");
 
-        Settings settings = Settings.builder().put(Settings.EMPTY).build();
+        Settings settings = Settings.builder()
+                .put("cluster.name", clusterName)
+                .build();
         TransportClient client = new PreBuiltTransportClient(settings);
         for(String serverPort: servers) {
             String[] serverAndPort = serverPort.split(":");
@@ -151,8 +154,9 @@ public class ElasticSearchBackendListenerClient extends
     public Arguments getDefaultParameters() {
         Arguments arguments = new Arguments();
         arguments.addArgument("elasticsearchCluster", "localhost:" + DEFAULT_ELASTICSEARCH_PORT);
-        arguments.addArgument("indexName", "smartmeterv2");
-        arguments.addArgument("sampleType", "smartmeterv2");
+        arguments.addArgument("clusterName", "elasticsearch");
+        arguments.addArgument("indexName", "smartmeterv");
+        arguments.addArgument("sampleType", "smartmeterv");
         arguments.addArgument("runId", "${__UUID()}");
         arguments.addArgument("release", "");
         arguments.addArgument("testPlanName", "");
