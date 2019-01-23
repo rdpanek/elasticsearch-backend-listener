@@ -18,7 +18,7 @@
 
 ## How to use
 
-![Smartmeter](https://raw.githubusercontent.com/test-stack/smartmeter/develop/docs/elasticSearchBackendListener.png)
+![Smartmeter](https://github.com/rdpanek/elasticsearch-backend-listener/raw/master/docs/elasticSearchBackendListener.png)
 
 - `elasticsearchCluster` ip and port any your node
 - `clusterName` your cluster name
@@ -31,7 +31,7 @@ For view of real-time performance test metrics, you cau use [Elasticsearch](http
 
 ## Setup Elasticsearch
 
-### Create `smartmeterv` index pattern
+### Create `smartmeter` index pattern
 
 ```
 PUT _template/smartmeter
@@ -187,6 +187,6 @@ PUT _template/smartmeter
 
 
 Check Kibana
-![Kibana](https://raw.githubusercontent.com/test-stack/smartmeter/master/docs/kibana.png)
+![Kibana](https://github.com/rdpanek/elasticsearch-backend-listener/raw/master/docs/kibana.png)
 
 **Congratulations, let's run performance tests** | Less code more tests
