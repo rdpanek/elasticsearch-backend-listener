@@ -1,15 +1,15 @@
 # JMeter ElasticSearchBackendListenerClient Plugin
 
 ## Compatibility
+> tested 20.01.2019
 
-### JMeter
-
-- (tested 24.10.2018) JMeter 5.0.0
-- Smartmeter 1.3.0-SNAPSHOT-161122-1811
+- JMeter 5.0.0
+- Smartmeter 1.8.2
 
 ### Elasticsearch
+> tested 20.01.2019
 
-- (tested 24.10.2018) Elasticsearch 6.x
+- Elasticsearch 6.5.x
 
 ## Install
 
@@ -20,8 +20,9 @@
 
 ![Smartmeter](https://raw.githubusercontent.com/test-stack/smartmeter/develop/docs/elasticSearchBackendListener.png)
 
-- `elasticsearchCluster` is target instance of Elasticsearch
-- `indexName` and `sampleType` only for experts
+- `elasticsearchCluster` ip and port any your node
+- `clusterName` your cluster name
+- `indexName` and `sampleType` set yout index pattern
 - `runId` is ID of unique run
 - `release`, `testPlanName` and `flag` is a searchable labels
 - `verbose` options `always|ifError|never` logs of requests and response
@@ -30,7 +31,7 @@ For view of real-time performance test metrics, you cau use [Elasticsearch](http
 
 ## Setup Elasticsearch
 
-Create `smartmeterv2` template
+### Create `smartmeterv` index pattern
 
 ```
 PUT _template/smartmeter
@@ -180,6 +181,10 @@ PUT _template/smartmeter
 	}
 }
 ```
+
+### Setup your nodes
+- `indices.memory.index_buffer_size: "30%"`
+
 
 Check Kibana
 ![Kibana](https://raw.githubusercontent.com/test-stack/smartmeter/master/docs/kibana.png)

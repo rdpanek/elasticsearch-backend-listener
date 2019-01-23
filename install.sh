@@ -25,4 +25,4 @@ curl -L -o t-digest-3.2.jar "http://central.maven.org/maven2/com/tdunning/t-dige
 
 # Download Elasticsearch BackendListener
 cd ext/ && \
-curl -L -o ElasticSearchBackendListenerClient.jar "https://github.com/test-stack/elasticSearchBackendListenerClient/blob/master/out/artifacts/ElasticSearchBackendListenerClient_jar/ElasticSearchBackendListenerClient.jar?raw=true"
+curl -L -o ElasticSearchBackendListenerClient.jar "https://github.com/test-stack/elasticSearchBackendListenerClient/raw/411da8103d02a3dd1583cd5447b4beed43c4b609/out/artifacts/ElasticSearchBackendListenerClient_jar/ElasticSearchBackendListenerClient.jar"
