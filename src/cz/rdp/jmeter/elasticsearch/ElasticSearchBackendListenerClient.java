@@ -10,7 +10,8 @@ import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.TransportAddress;
-import org.elasticsearch.transport.client.PreBuiltTransportClient;
+import org.elasticsearch.xpack.client.PreBuiltXPackTransportClient;
+import org.elasticsearch.xpack.core.XPackClient;
 
 import java.net.InetAddress;
 import java.text.SimpleDateFormat;
@@ -127,8 +128,9 @@ public class ElasticSearchBackendListenerClient extends
 
         Settings settings = Settings.builder()
                 .put("cluster.name", clusterName)
+                .put("xpack.security.user", "elastic:X")
                 .build();
-        TransportClient client = new PreBuiltTransportClient(settings);
+        TransportClient client = new PreBuiltXPackTransportClient(settings);
         for(String serverPort: servers) {
             String[] serverAndPort = serverPort.split(":");
             int port = DEFAULT_ELASTICSEARCH_PORT;

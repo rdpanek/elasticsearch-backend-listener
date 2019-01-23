@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="x-pack-transport-6.5.4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/x-pack-transport-6.5.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/x-pack-core-6.5.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
