@@ -104,10 +104,6 @@ PUT _template/smartmeter
   			"Latency": {
   				"type": "long"
   			},
-  			"NormalizedTimestamp": {
-  				"type": "date",
-  				"format": "dateOptionalTime"
-  			},
   			"RequestHeaders": {
   				"type": "text",
   				"index": false
@@ -116,12 +112,7 @@ PUT _template/smartmeter
   				"type": "keyword"
   			},
   			"ResponseData": {
-  				"type": "text",
-  				"fields": {
-  					"raw": {
-  						"type": "keyword"
-  					}
-  				}
+  				"type": "text"
   			},
   			"ResponseMessage": {
   				"type": "text",
