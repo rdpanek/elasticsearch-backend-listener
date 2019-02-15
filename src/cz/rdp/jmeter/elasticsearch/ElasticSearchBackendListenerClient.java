@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Arrays;
 
 public class ElasticSearchBackendListenerClient extends
         AbstractBackendListenerClient {
@@ -44,6 +45,7 @@ public class ElasticSearchBackendListenerClient extends
             jsonObject.put("testPlanName", context.getParameter("testPlanName"));
             jsonObject.put("release", context.getParameter("release"));
             jsonObject.put("verbose", context.getParameter("verbose"));
+            jsonObject.put("saveSubResults", context.getParameter("saveSubResults"));
             jsonObject.put("flag", context.getParameter("flag"));
             _client.prepareIndex(indexNameToUse, sampleType).setSource(jsonObject).get();
         }
@@ -71,7 +73,25 @@ public class ElasticSearchBackendListenerClient extends
         } else {
             map.put("ResponseData", "");
         }
-        map.put("SubResults", result.getSubResults());
+
+        String allSubresults = "";
+        if (context.getParameter("saveSubResults").equals("true")) {
+            SampleResult[] subResults = result.getSubResults();
+            for (SampleResult subResult : subResults) {
+                allSubresults = "Errors: " + subResult.getErrorCount() + ", " + allSubresults;
+                allSubresults = "ConnectTime: " + subResult.getContentType() + ", " + allSubresults;
+                allSubresults = "URL: " + subResult.getUrlAsString() + ", " + allSubresults;
+                allSubresults = "Latency: " + subResult.getLatency() + ", " + allSubresults;
+                allSubresults = "ResponseMessage: " + subResult.getResponseMessage() + ", " + allSubresults;
+                allSubresults = "ContentType: " + subResult.getContentType() + ", " + allSubresults;
+                allSubresults = "DataType: " + subResult.getDataType() + ", " + allSubresults;
+                allSubresults = "ContentType: " + subResult.getContentType() + ", " + allSubresults;
+                allSubresults = "RC: " + subResult.getResponseCode() + ", " + allSubresults;
+                allSubresults = "Sampler: " + subResult.getSampleLabel() + ", " + allSubresults;
+                allSubresults = "\n" + allSubresults;
+            }
+        }
+        map.put("SubResults",allSubresults);
         map.put("DataEncoding", result.getDataEncodingWithDefault());
         map.put("ThreadName", result.getThreadName());
         map.put("DataType", result.getDataType());
@@ -84,12 +104,11 @@ public class ElasticSearchBackendListenerClient extends
         map.put("SampleCount", result.getSampleCount());
         map.put("SamplerData", result.getSamplerData());
         map.put("ErrorCount", result.getErrorCount());
-        map.put("Bytes", result.getBytes());
-        map.put("BodySize", result.getBodySize());
+        map.put("Bytes", result.getBytesAsLong());
+        map.put("BodySize", result.getBodySizeAsLong());
         map.put("ContentType", result.getContentType());
         map.put("IdleTime", result.getIdleTime());
         map.put(TIMESTAMP, new Date(result.getTimeStamp()));
-        map.put("NormalizedTimestamp", new Date(result.getTimeStamp() - offset));
         map.put("StartTime", new Date(result.getStartTime()));
         map.put("EndTime", new Date(result.getEndTime()));
         map.put("RunId", runId);
@@ -155,12 +174,13 @@ public class ElasticSearchBackendListenerClient extends
         Arguments arguments = new Arguments();
         arguments.addArgument("elasticsearchCluster", "localhost:" + DEFAULT_ELASTICSEARCH_PORT);
         arguments.addArgument("clusterName", "elasticsearch");
-        arguments.addArgument("indexName", "smartmeterv");
-        arguments.addArgument("sampleType", "smartmeterv");
+        arguments.addArgument("indexName", "performance-tests");
+        arguments.addArgument("sampleType", "performance-tests");
         arguments.addArgument("runId", "${__UUID()}");
         arguments.addArgument("release", "");
         arguments.addArgument("testPlanName", "");
         arguments.addArgument("verbose", "always|ifError|never");
+        arguments.addArgument("saveSubResults", "true|false");
         arguments.addArgument("flag", "");
         return arguments;
 
