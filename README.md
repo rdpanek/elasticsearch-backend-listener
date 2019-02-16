@@ -25,18 +25,22 @@
 - `indexName` and `sampleType` set yout index pattern
 - `runId` is ID of unique run
 - `release`, `testPlanName` and `flag` is a searchable labels
-- `verbose` options `always|ifError|never` logs of requests and response
+### Warning
+These settins will affected the troughput for logging to Elasticsearch. Consider about the setup `Async Queue size`. Default is 5000 messages. These settings are recommended only for `smoke`.
 
-For view of real-time performance test metrics, you cau use [Elasticsearch](https://www.elastic.co/) and [Kibana](https://www.elastic.co/products/kibana) or [Grafana](http://grafana.org/).
+- `verbose` options `always|ifError|never` logs of full requests and response
+- `saveSubResults` options `true|false` logs all data from subrequests
+
+For view of real-time performance test metrics, you cau use [Elasticsearch](https://www.elastic.co/) and [Kibana](https://www.elastic.co/products/kibana)
 
 ## Setup Elasticsearch
 
 ### Create `smartmeter` index pattern
 
 ```
-PUT _template/smartmeter
+PUT _template/performance-tests
 {
-  "index_patterns": ["smartmeter-*"],
+  "index_patterns": ["performance-tests-*"],
   "settings": {
     "number_of_shards": 2,
     "number_of_replicas" : 1,
@@ -44,7 +48,7 @@ PUT _template/smartmeter
     "index.refresh_interval": "30s"
   },
   "mappings": {
-    "smartmeter": {
+    "performance-tests": {
   		"properties": {
   			"AllThreads": {
   				"type": "long"
