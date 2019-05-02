@@ -1,0 +1,136 @@
+{
+  "index_patterns": ["performance-tests-*"],
+  "settings": {
+    "number_of_shards": 2,
+    "number_of_replicas" : 1,
+    "index.translog.durability": "async",
+    "index.refresh_interval": "30s"
+  },
+  "mappings": {
+    "performance-tests": {
+  		"properties": {
+  			"AllThreads": {
+  				"type": "long"
+  			},
+  			"Assertions": {
+  				"properties": {
+  					"Failure": {
+  						"type": "boolean"
+  					},
+  					"FailureMessage": {
+  						"type": "keyword",
+  				    "index": false
+  					},
+  					"Name": {
+  						"type": "keyword",
+  				    "index": false
+  					}
+  				}
+  			},
+  			"BodySize": {
+  				"type": "long"
+  			},
+  			"Bytes": {
+  				"type": "long"
+  			},
+  			"ConnectTime": {
+  				"type": "long"
+  			},
+  			"ContentType": {
+  				"type": "keyword",
+  				"index": false
+  			},
+  			"DataEncoding": {
+  				"type": "keyword",
+  				"index": false
+  			},
+  			"DataType": {
+  				"type": "keyword",
+  				"index": false
+  			},
+  			"ElapsedTime": {
+  				"type": "long"
+  			},
+  			"EndTime": {
+  				"type": "date",
+  				"format": "dateOptionalTime"
+  			},
+  			"ErrorCount": {
+  				"type": "long"
+  			},
+  			"GrpThreads": {
+  				"type": "long"
+  			},
+  			"IdleTime": {
+  				"type": "long"
+  			},
+  			"Latency": {
+  				"type": "long"
+  			},
+  			"RequestHeaders": {
+  				"type": "text",
+  				"index": false
+  			},
+  			"ResponseCode": {
+  				"type": "keyword"
+  			},
+  			"ResponseData": {
+  				"type": "text"
+  			},
+  			"ResponseMessage": {
+  				"type": "text",
+  				"fields": {
+  					"raw": {
+  						"type": "keyword"
+  					}
+  				}
+  			},
+  			"RunId": {
+  				"type": "keyword"
+  			},
+  			"SampleCount": {
+  				"type": "long"
+  			},
+  			"SampleLabel": {
+  				"type": "keyword"
+  			},
+  			"SamplerData": {
+  				"type": "text"
+  			},
+  			"StartTime": {
+  				"type": "date",
+  				"format": "dateOptionalTime"
+  			},
+  			"SubResults": {
+  				"type": "text"
+  			},
+  			"Success": {
+  				"type": "boolean"
+  			},
+  			"ThreadName": {
+  				"type": "keyword",
+  				"index": false
+  			},
+  			"URL": {
+  				"type": "keyword"
+  			},
+  			"flag": {
+  				"type": "keyword"
+  			},
+  			"release": {
+  				"type": "keyword"
+  			},
+  			"testPlanName": {
+  				"type": "keyword"
+  			},
+  			"timestamp": {
+  				"type": "date",
+  				"format": "dateOptionalTime"
+  			},
+  			"verbose": {
+  				"type": "keyword"
+  			}
+  		}
+    }
+	}
+}
